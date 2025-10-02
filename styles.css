@@ -229,14 +229,14 @@ body {
 
 .hero .btn-primary {
     background: #1E3D9C;
-    color: #FFC000;
+    color: white;
     box-shadow: 0 4px 14px rgba(30, 61, 156, 0.3);
     font-weight: 600;
 }
 
 .hero .btn-primary:hover {
     background: #1E3D9C;
-    color: #FFC000;
+    color: white;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(30, 61, 156, 0.4);
 }
@@ -461,7 +461,7 @@ body {
 
 .btn-primary {
     background: #1E3D9C;
-    color: #FFC000;
+    color: white;
     border-radius: 12px;
     border: none;
     font-weight: 600;
@@ -486,7 +486,7 @@ body {
 
 .btn-primary:hover {
     background: #1E3D9C;
-    color: #FFC000;
+    color: white;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(30, 64, 175, 0.35);
 }
@@ -615,6 +615,10 @@ body {
 .audit-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, #1E3D9C, #FFC000) border-box;
+    animation: spinBorder 2s linear infinite;
 }
 
 .audit-icon {
@@ -708,6 +712,10 @@ body {
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, #1E3D9C, #FFC000) border-box;
+    animation: spinBorder 2s linear infinite;
 }
 
 .service-icon {
@@ -781,6 +789,10 @@ body {
 .equipment-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, #1E3D9C, #FFC000) border-box;
+    animation: spinBorder 2s linear infinite;
 }
 
 .equipment-image {
@@ -1590,7 +1602,7 @@ body {
 
 .cta-buttons .btn-outline:hover {
     background: #1E3D9C !important;
-    color: #FFC000 !important;
+    color: white !important;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
 }
@@ -2206,6 +2218,25 @@ body {
     animation: fadeInUp 0.6s ease-out;
 }
 
+/* Spinning Border Animation */
+@keyframes spinBorder {
+    0% {
+        background: linear-gradient(0deg, #1E3D9C, #FFC000);
+    }
+    25% {
+        background: linear-gradient(90deg, #1E3D9C, #FFC000);
+    }
+    50% {
+        background: linear-gradient(180deg, #1E3D9C, #FFC000);
+    }
+    75% {
+        background: linear-gradient(270deg, #1E3D9C, #FFC000);
+    }
+    100% {
+        background: linear-gradient(360deg, #1E3D9C, #FFC000);
+    }
+}
+
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;
@@ -2231,7 +2262,7 @@ html {
 /* Gallery Page Styles */
 .gallery-hero {
     padding: 120px 0 80px;
-    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%);
+    background: #1E3D9C;
     color: white;
     text-align: center;
 }
@@ -2382,7 +2413,7 @@ html {
 
 .gallery-cta {
     padding: 4rem 0;
-    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%);
+    background: #1E3D9C;
     color: white;
     text-align: center;
 }
@@ -2435,7 +2466,7 @@ html {
 
 .powerbi-header {
     padding: 2rem;
-    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%);
+    background: #1E3D9C;
     color: white;
     text-align: center;
 }
