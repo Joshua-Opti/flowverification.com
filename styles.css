@@ -616,6 +616,8 @@ body {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     position: relative;
+    border: 2px solid transparent;
+    background: white;
 }
 
 .audit-card:hover::before {
@@ -724,6 +726,8 @@ body {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     position: relative;
+    border: 2px solid transparent;
+    background: white;
 }
 
 .service-card:hover::before {
@@ -812,6 +816,8 @@ body {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     position: relative;
+    border: 2px solid transparent;
+    background: #f8fafc;
 }
 
 .equipment-card:hover::before {
@@ -2311,7 +2317,7 @@ html {
     justify-content: center;
     gap: 3rem;
     margin-top: 2rem;
-    color: #FFC000;
+    color: white;
 }
 
 .stat-item {
@@ -2322,7 +2328,7 @@ html {
     display: block;
     font-size: 2.5rem;
     font-weight: 700;
-    color: white;
+    color: #FFC000;
 }
 
 .stat-label {
