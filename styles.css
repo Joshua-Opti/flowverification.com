@@ -456,18 +456,18 @@ body {
 }
 
 .btn-outline {
-    background: white;
-    color: #1E3D9C;
-    border: 2px solid #1E3D9C;
-    border-radius: 12px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    box-shadow: 0 4px 14px rgba(30, 64, 175, 0.25);
+    background: white !important;
+    color: #1E3D9C !important;
+    border: 2px solid #1E3D9C !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    box-shadow: 0 4px 14px rgba(30, 64, 175, 0.25) !important;
 }
 
 .btn-outline:hover {
-    background: #1E3D9C;
-    color: white;
+    background: #1E3D9C !important;
+    color: white !important;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
 }
@@ -1466,6 +1466,23 @@ body {
     justify-content: center;
     margin-bottom: 3rem;
     flex-wrap: wrap;
+}
+
+.cta-buttons .btn-outline {
+    background: white !important;
+    color: #1E3D9C !important;
+    border: 2px solid #1E3D9C !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    box-shadow: 0 4px 14px rgba(30, 64, 175, 0.25) !important;
+}
+
+.cta-buttons .btn-outline:hover {
+    background: #1E3D9C !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
 }
 
 .btn-large {
