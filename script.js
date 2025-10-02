@@ -1,12 +1,38 @@
-// Mobile Navigation Toggle
+// Enhanced Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu when clicking on nav links
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     }
 
@@ -771,4 +797,62 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Enhanced form validation and loading states
+function validateForm(form) {
+    let isValid = true;
+    const requiredFields = form.querySelectorAll('[required]');
+    
+    requiredFields.forEach(field => {
+        const formGroup = field.closest('.form-group');
+        if (formGroup) {
+            formGroup.classList.remove('error', 'success');
+        }
+        
+        if (!field.value.trim()) {
+            isValid = false;
+            if (formGroup) {
+                formGroup.classList.add('error');
+            }
+        } else {
+            if (formGroup) {
+                formGroup.classList.add('success');
+            }
+        }
+    });
+    
+    // Email validation
+    const emailField = form.querySelector('input[type="email"]');
+    if (emailField && emailField.value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const formGroup = emailField.closest('.form-group');
+        if (!emailRegex.test(emailField.value)) {
+            isValid = false;
+            if (formGroup) {
+                formGroup.classList.add('error');
+            }
+        }
+    }
+    
+    return isValid;
+}
+
+// Add loading states to buttons
+document.addEventListener('DOMContentLoaded', () => {
+    const submitButtons = document.querySelectorAll('button[type="submit"]');
+    submitButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (this.form && validateForm(this.form)) {
+                this.classList.add('loading');
+                this.disabled = true;
+                
+                // Remove loading state after form processing
+                setTimeout(() => {
+                    this.classList.remove('loading');
+                    this.disabled = false;
+                }, 2000);
+            }
+        });
+    });
+});
 
