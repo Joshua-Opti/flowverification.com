@@ -228,13 +228,15 @@ body {
 }
 
 .hero .btn-primary {
-    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%);
-    color: white;
+    background: #1E3D9C;
+    color: #FFC000;
     box-shadow: 0 4px 14px rgba(30, 61, 156, 0.3);
+    font-weight: 600;
 }
 
 .hero .btn-primary:hover {
-    background: linear-gradient(135deg, #FFC000 0%, #1E3D9C 100%);
+    background: #1E3D9C;
+    color: #FFC000;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(30, 61, 156, 0.4);
 }
@@ -458,10 +460,11 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%);
-    color: white;
+    background: #1E3D9C;
+    color: #FFC000;
     border-radius: 12px;
     border: none;
+    font-weight: 600;
 }
 
 .btn-outline {
@@ -482,7 +485,8 @@ body {
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #FFC000 0%, #1E3D9C 100%);
+    background: #1E3D9C;
+    color: #FFC000;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(30, 64, 175, 0.35);
 }
@@ -702,8 +706,8 @@ body {
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .service-icon {
@@ -1222,7 +1226,7 @@ body {
 
 .client-logo-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border-color: #1E3D9C;
 }
 
@@ -1404,7 +1408,7 @@ body {
 
 .testimonial-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .stars {
@@ -1585,8 +1589,8 @@ body {
 }
 
 .cta-buttons .btn-outline:hover {
-    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%) !important;
-    color: white !important;
+    background: #1E3D9C !important;
+    color: #FFC000 !important;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
 }
@@ -1798,11 +1802,12 @@ body {
     text-align: center;
     padding: 2rem;
     border-radius: 12px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .feature-icon {
