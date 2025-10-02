@@ -121,7 +121,7 @@ body {
     justify-content: center;
     text-align: center;
     position: relative;
-    padding: 2rem 1rem;
+    padding: 4rem 2rem;
     overflow: hidden;
 }
 
@@ -836,6 +836,15 @@ body {
     font-size: 0.875rem;
     font-weight: 500;
     margin: 0.25rem 0.25rem 0.25rem 0;
+}
+
+/* Ensure main page tags have proper styling */
+.equipment-card .tag,
+.service-card .tag,
+.audit-card .tag {
+    background: #dbeafe !important;
+    color: #1E3D9C !important;
+    border: 1px solid #93c5fd;
 }
 
 /* Pricing Section */
@@ -1662,7 +1671,7 @@ body {
 
 @media (max-width: 768px) {
     .hero {
-        padding: 1rem;
+        padding: 2rem 1rem;
         min-height: 100vh;
     }
     
