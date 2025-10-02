@@ -48,6 +48,14 @@ body {
     gap: 0.75rem;
 }
 
+.nav-logo a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: #1a1a1a;
+}
+
 .nav-logo .logo-img {
     height: 40px;
     width: auto;
@@ -121,7 +129,7 @@ body {
     justify-content: center;
     text-align: center;
     position: relative;
-    padding: 4rem 2rem;
+    padding: 6rem 2rem 4rem 2rem;
     overflow: hidden;
 }
 
@@ -220,13 +228,13 @@ body {
 }
 
 .hero .btn-primary {
-    background: #3b6bb8;
+    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%);
     color: white;
     box-shadow: 0 4px 14px rgba(30, 61, 156, 0.3);
 }
 
 .hero .btn-primary:hover {
-    background: #2563eb;
+    background: linear-gradient(135deg, #FFC000 0%, #1E3D9C 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(30, 61, 156, 0.4);
 }
@@ -450,9 +458,10 @@ body {
 }
 
 .btn-primary {
-    background: #1E3D9C;
+    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%);
     color: white;
     border-radius: 12px;
+    border: none;
 }
 
 .btn-outline {
@@ -473,7 +482,7 @@ body {
 }
 
 .btn-primary:hover {
-    background: #1e3a8a;
+    background: linear-gradient(135deg, #FFC000 0%, #1E3D9C 100%);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(30, 64, 175, 0.35);
 }
@@ -488,7 +497,7 @@ body {
 }
 
 .btn-secondary:hover {
-    background: #1E3D9C;
+    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%);
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(30, 64, 175, 0.25);
@@ -1518,7 +1527,7 @@ body {
 
 /* CTA Section */
 .cta-section {
-    background: linear-gradient(135deg, #1E3D9C 0%, #3b6bb8 100%);
+    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%);
     color: white;
     padding: 100px 0;
     text-align: center;
@@ -1576,7 +1585,7 @@ body {
 }
 
 .cta-buttons .btn-outline:hover {
-    background: #1E3D9C !important;
+    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%) !important;
     color: white !important;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
@@ -2217,7 +2226,7 @@ html {
 /* Gallery Page Styles */
 .gallery-hero {
     padding: 120px 0 80px;
-    background: linear-gradient(135deg, #1E3D9C 0%, #3b6bb8 100%);
+    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%);
     color: white;
     text-align: center;
 }
@@ -2368,7 +2377,7 @@ html {
 
 .gallery-cta {
     padding: 4rem 0;
-    background: linear-gradient(135deg, #1E3D9C 0%, #3b6bb8 100%);
+    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%);
     color: white;
     text-align: center;
 }
@@ -2421,7 +2430,7 @@ html {
 
 .powerbi-header {
     padding: 2rem;
-    background: linear-gradient(135deg, #1E3D9C 0%, #3b6bb8 100%);
+    background: linear-gradient(135deg, #1E3D9C 0%, #FFC000 100%);
     color: white;
     text-align: center;
 }
