@@ -2097,6 +2097,60 @@ body {
         width: 100%;
     }
     
+    /* Distance Input Container */
+    .distance-input-container {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    
+    .distance-input-container input {
+        flex: 1;
+    }
+    
+    .btn-small {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+    
+    .location-status {
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+    }
+    
+    .location-status.success {
+        background-color: #d1fae5;
+        color: #065f46;
+        border: 1px solid #a7f3d0;
+    }
+    
+    .location-status.error {
+        background-color: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+    }
+    
+    .location-status.loading {
+        background-color: #dbeafe;
+        color: #1e40af;
+        border: 1px solid #93c5fd;
+    }
+    
+    /* Mobile responsive for distance container */
+    @media (max-width: 768px) {
+        .distance-input-container {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .btn-small {
+            width: 100%;
+        }
+    }
+    
     /* Additional mobile select fixes */
     select {
         max-width: 100%;

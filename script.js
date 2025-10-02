@@ -17,6 +17,97 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.remove('active');
         }
     }));
+    
+    // Geolocation functionality
+    const getLocationBtn = document.getElementById('getLocationBtn');
+    const distanceInput = document.getElementById('distance');
+    const locationStatus = document.getElementById('locationStatus');
+    
+    // OPTI Engineering coordinates (Plot 43, Driefontein Rd, Johannesburg)
+    const optiCoords = {
+        lat: -25.993210342940483,
+        lng: 27.82689358857203
+    };
+    
+    if (getLocationBtn) {
+        getLocationBtn.addEventListener('click', function() {
+            if (navigator.geolocation) {
+                showLocationStatus('Getting your location...', 'loading');
+                
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const userLat = position.coords.latitude;
+                        const userLng = position.coords.longitude;
+                        
+                        // Calculate distance using Haversine formula
+                        const distance = calculateDistance(
+                            optiCoords.lat, optiCoords.lng,
+                            userLat, userLng
+                        );
+                        
+                        // Update the distance input
+                        distanceInput.value = Math.round(distance);
+                        
+                        showLocationStatus(
+                            `Location found! Distance: ${Math.round(distance)} km`,
+                            'success'
+                        );
+                        
+                        // Hide status after 3 seconds
+                        setTimeout(() => {
+                            locationStatus.style.display = 'none';
+                        }, 3000);
+                    },
+                    function(error) {
+                        let errorMessage = 'Unable to get your location. ';
+                        
+                        switch(error.code) {
+                            case error.PERMISSION_DENIED:
+                                errorMessage += 'Please allow location access and try again.';
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                errorMessage += 'Location information is unavailable.';
+                                break;
+                            case error.TIMEOUT:
+                                errorMessage += 'Location request timed out.';
+                                break;
+                            default:
+                                errorMessage += 'An unknown error occurred.';
+                                break;
+                        }
+                        
+                        showLocationStatus(errorMessage, 'error');
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 300000 // 5 minutes
+                    }
+                );
+            } else {
+                showLocationStatus('Geolocation is not supported by this browser.', 'error');
+            }
+        });
+    }
+    
+    function showLocationStatus(message, type) {
+        if (locationStatus) {
+            locationStatus.textContent = message;
+            locationStatus.className = `location-status ${type}`;
+            locationStatus.style.display = 'block';
+        }
+    }
+    
+    function calculateDistance(lat1, lng1, lat2, lng2) {
+        const R = 6371; // Earth's radius in kilometers
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLng = (lng2 - lng1) * Math.PI / 180;
+        const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLng/2) * Math.sin(dLng/2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R * c;
+    }
 });
 
 // Smooth scrolling for navigation links

@@ -683,8 +683,15 @@
 
                         <div class="form-group">
                             <label for="distance">Distance from OPTI Engineering (km)</label>
+                            <div class="distance-input-container">
                             <input type="number" id="distance" name="distance" placeholder="Enter distance in kilometers" required>
+                                <button type="button" id="getLocationBtn" class="btn btn-secondary btn-small">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Use My Location
+                                </button>
+                            </div>
                             <small>Our headquarters: <a href="https://maps.google.com/?q=Plot+43+Driefontein+Rd,+Johannesburg,+1739" target="_blank">OPTI Engineering Location</a></small>
+                            <div id="locationStatus" class="location-status" style="display: none;"></div>
                         </div>
 
                         <div class="form-group">
