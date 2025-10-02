@@ -576,6 +576,94 @@ body {
     position: relative;
 }
 
+/* Audit Services Section */
+.audit-services {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    position: relative;
+}
+
+.audit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.audit-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.audit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.audit-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #1E3D9C, #3b6bb8);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.audit-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.audit-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.audit-card p {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.audit-features {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.audit-features li {
+    padding: 0.5rem 0;
+    color: #475569;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.audit-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+}
+
+.audit-cta {
+    text-align: center;
+}
+
+.audit-cta .btn {
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
 .services::before {
     content: '';
     position: absolute;

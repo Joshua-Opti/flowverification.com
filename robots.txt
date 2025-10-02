@@ -15,3 +15,4 @@ Crawl-delay: 1
 Allow: /styles.css
 Allow: /script.js
 Allow: /images/
+
