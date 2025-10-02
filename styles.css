@@ -1547,6 +1547,23 @@ body {
         min-height: 100vh;
     }
     
+    /* Mobile form container improvements */
+    .pricing-container {
+        padding: 0 1rem;
+    }
+    
+    .pricing-form {
+        margin: 0;
+        padding: 1.5rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
     .hero-content {
         max-width: 100%;
     }
@@ -1886,7 +1903,51 @@ body {
 
     .btn {
         padding: 10px 20px;
-        font-size: 0.9rem;
+    }
+    
+    /* Mobile form fixes */
+    .pricing-form {
+        padding: 1rem;
+        margin: 0 0.5rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 12px 14px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .checkbox-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .substance-dropdown {
+        width: 100%;
+    }
+    
+    .substance-checkboxes {
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+    
+    .quote-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .quote-actions .btn {
+        width: 100%;
     }
 }
 
