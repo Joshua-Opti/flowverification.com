@@ -615,9 +615,20 @@ body {
 .audit-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 2px solid transparent;
-    background: linear-gradient(white, white) padding-box,
-                linear-gradient(45deg, #1E3D9C, #FFC000) border-box;
+    position: relative;
+}
+
+.audit-card:hover::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #1E3D9C, #FFC000, #1E3D9C, #FFC000);
+    background-size: 400% 400%;
+    border-radius: 14px;
+    z-index: -1;
     animation: spinBorder 2s linear infinite;
 }
 
@@ -712,9 +723,20 @@ body {
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 2px solid transparent;
-    background: linear-gradient(white, white) padding-box,
-                linear-gradient(45deg, #1E3D9C, #FFC000) border-box;
+    position: relative;
+}
+
+.service-card:hover::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #1E3D9C, #FFC000, #1E3D9C, #FFC000);
+    background-size: 400% 400%;
+    border-radius: 14px;
+    z-index: -1;
     animation: spinBorder 2s linear infinite;
 }
 
@@ -789,9 +811,20 @@ body {
 .equipment-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 2px solid transparent;
-    background: linear-gradient(white, white) padding-box,
-                linear-gradient(45deg, #1E3D9C, #FFC000) border-box;
+    position: relative;
+}
+
+.equipment-card:hover::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #1E3D9C, #FFC000, #1E3D9C, #FFC000);
+    background-size: 400% 400%;
+    border-radius: 14px;
+    z-index: -1;
     animation: spinBorder 2s linear infinite;
 }
 
@@ -2221,19 +2254,13 @@ body {
 /* Spinning Border Animation */
 @keyframes spinBorder {
     0% {
-        background: linear-gradient(0deg, #1E3D9C, #FFC000);
-    }
-    25% {
-        background: linear-gradient(90deg, #1E3D9C, #FFC000);
+        background-position: 0% 50%;
     }
     50% {
-        background: linear-gradient(180deg, #1E3D9C, #FFC000);
-    }
-    75% {
-        background: linear-gradient(270deg, #1E3D9C, #FFC000);
+        background-position: 100% 50%;
     }
     100% {
-        background: linear-gradient(360deg, #1E3D9C, #FFC000);
+        background-position: 0% 50%;
     }
 }
 
@@ -2284,6 +2311,7 @@ html {
     justify-content: center;
     gap: 3rem;
     margin-top: 2rem;
+    color: #FFC000;
 }
 
 .stat-item {
