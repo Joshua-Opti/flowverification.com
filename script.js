@@ -30,14 +30,25 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     if (getLocationBtn) {
+        console.log('Geolocation button found, adding event listener');
         getLocationBtn.addEventListener('click', function() {
+            console.log('Location button clicked');
+            showLocationStatus('Getting your location...', 'loading');
+            
+            // Test if the button click is working
+            console.log('Button click event fired successfully');
+            
             if (navigator.geolocation) {
-                showLocationStatus('Getting your location...', 'loading');
+                console.log('Geolocation supported, requesting position');
                 
                 navigator.geolocation.getCurrentPosition(
                     function(position) {
+                        console.log('Position received:', position);
                         const userLat = position.coords.latitude;
                         const userLng = position.coords.longitude;
+                        
+                        console.log('User coordinates:', userLat, userLng);
+                        console.log('OPTI coordinates:', optiCoords.lat, optiCoords.lng);
                         
                         // Calculate distance using Haversine formula
                         const distance = calculateDistance(
@@ -45,20 +56,28 @@ document.addEventListener('DOMContentLoaded', function() {
                             userLat, userLng
                         );
                         
+                        console.log('Calculated distance:', distance);
+                        
                         // Update the distance input
-                        distanceInput.value = Math.round(distance);
+                        if (distanceInput) {
+                            distanceInput.value = Math.round(distance);
+                            console.log('Distance input updated with value:', Math.round(distance));
+                        }
                         
                         showLocationStatus(
                             `Location found! Distance: ${Math.round(distance)} km`,
                             'success'
                         );
                         
-                        // Hide status after 3 seconds
+                        // Hide status after 5 seconds
                         setTimeout(() => {
-                            locationStatus.style.display = 'none';
-                        }, 3000);
+                            if (locationStatus) {
+                                locationStatus.style.display = 'none';
+                            }
+                        }, 5000);
                     },
                     function(error) {
+                        console.error('Geolocation error:', error);
                         let errorMessage = 'Unable to get your location. ';
                         
                         switch(error.code) {
@@ -80,14 +99,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     {
                         enableHighAccuracy: true,
-                        timeout: 10000,
+                        timeout: 15000,
                         maximumAge: 300000 // 5 minutes
                     }
                 );
             } else {
+                console.log('Geolocation not supported');
                 showLocationStatus('Geolocation is not supported by this browser.', 'error');
             }
         });
+    } else {
+        console.log('Location button not found');
     }
     
     function showLocationStatus(message, type) {
@@ -107,6 +129,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 Math.sin(dLng/2) * Math.sin(dLng/2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         return R * c;
+    }
+    
+    // Alternative: Calculate driving distance using Google Maps (if available)
+    function calculateDrivingDistance(origin, destination) {
+        return new Promise((resolve, reject) => {
+            if (typeof google !== 'undefined' && google.maps) {
+                const service = new google.maps.DistanceMatrixService();
+                service.getDistanceMatrix({
+                    origins: [origin],
+                    destinations: [destination],
+                    travelMode: google.maps.TravelMode.DRIVING,
+                    unitSystem: google.maps.UnitSystem.METRIC,
+                    avoidHighways: false,
+                    avoidTolls: false
+                }, (response, status) => {
+                    if (status === 'OK') {
+                        const distance = response.rows[0].elements[0].distance.value / 1000; // Convert to km
+                        resolve(distance);
+                    } else {
+                        reject(new Error('Distance calculation failed'));
+                    }
+                });
+            } else {
+                reject(new Error('Google Maps not available'));
+            }
+        });
     }
 });
 
