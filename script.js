@@ -294,106 +294,116 @@ document.getElementById('substance').addEventListener('change', function() {
 quoteForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
-    const formData = new FormData(quoteForm);
-    const auditType = formData.get('auditType');
-    const substanceSelect = document.getElementById('substance');
-    const substanceCheckboxes = document.getElementById('substanceCheckboxes');
+    // Show loading state
+    showLoading(this);
     
-    let substances = [];
-    if (substanceSelect.value === 'multiple') {
-        // Get selected checkboxes
-        const selectedCheckboxes = substanceCheckboxes.querySelectorAll('input[type="checkbox"]:checked');
-        substances = Array.from(selectedCheckboxes).map(cb => cb.value);
-    } else {
-        // Get single selection
-        substances = [substanceSelect.value];
-    }
-    
-    // Convert single audit type to array for compatibility
-    const auditTypes = [auditType];
-    const measuringPoints = parseInt(formData.get('measuringPoints')) || 0;
-    const duration = formData.get('duration');
-    const distance = parseFloat(formData.get('distance')) || 0;
-    const urgency = formData.get('urgency');
-    const additionalServicesList = formData.getAll('additionalServices');
-    
-    console.log('Form data:', {
-        auditTypes,
-        substances,
-        measuringPoints,
-        duration,
-        distance,
-        urgency,
-        additionalServicesList
-    });
-    
-    if (auditTypes.length === 0 || substances.length === 0 || !measuringPoints || !duration || !distance || !urgency) {
-        alert('Please fill in all required fields.');
-        return;
-    }
-    
-    // Calculate hours per measuring point
-    const hoursPerPoint = durationMultipliers[duration];
-    const totalAuditHours = measuringPoints * hoursPerPoint;
-    
-    // Calculate travel time (assuming 60km/h average speed)
-    const travelTime = (distance * 2) / 60; // Round trip
-    const travelCost = travelTime * travelRate + (distance * 2 * distanceRate);
-    
-    // Calculate accommodation (if multi-day)
-    const totalDays = Math.ceil(totalAuditHours / 24);
-    const accommodationCost = totalDays > 1 ? (totalDays - 1) * accommodationRate : 0;
-    
-    // Calculate technician cost
-    const technicianCost = totalAuditHours * technicianRate;
-    
-    // Calculate equipment cost (daily rate)
-    const equipmentCost = totalDays * equipmentRental;
-    
-    // Calculate base total
-    let total = technicianCost + equipmentCost + travelCost + accommodationCost;
-    
-    // Apply urgency surcharge (50% for super urgent)
-    if (urgency === 'emergency') {
-        total += (total * 0.5);
-    }
-    
-    // Add additional services
-    let additionalCost = 0;
-    additionalServicesList.forEach(service => {
-        if (service === 'report' || service === 'recommendations') {
-            // Proportional to duration (same time as audit)
-            additionalCost += totalAuditHours * technicianRate;
+    // Simulate processing time for better UX
+    setTimeout(() => {
+        const formData = new FormData(quoteForm);
+        const auditType = formData.get('auditType');
+        const substanceSelect = document.getElementById('substance');
+        const substanceCheckboxes = document.getElementById('substanceCheckboxes');
+        
+        let substances = [];
+        if (substanceSelect.value === 'multiple') {
+            // Get selected checkboxes
+            const selectedCheckboxes = substanceCheckboxes.querySelectorAll('input[type="checkbox"]:checked');
+            substances = Array.from(selectedCheckboxes).map(cb => cb.value);
         } else {
-            additionalCost += additionalServices[service];
+            // Get single selection
+            substances = [substanceSelect.value];
         }
-    });
-    
-    total += additionalCost;
-    
-    // Update quote display
-    document.getElementById('baseService').textContent = auditTypes.map(type => pricingStructure[type].name).join(', ');
-    document.getElementById('systemSizeQuote').textContent = measuringPoints + ' measuring points';
-    document.getElementById('durationQuote').textContent = hoursPerPoint + ' hours per point (' + totalAuditHours + ' total hours)';
-    document.getElementById('locationQuote').textContent = distance + ' km';
-    document.getElementById('urgencyQuote').textContent = urgency.charAt(0).toUpperCase() + urgency.slice(1);
-    
-    // Additional services display
-    const additionalServicesText = additionalServicesList.length > 0 
-        ? additionalServicesList.map(service => service.charAt(0).toUpperCase() + service.slice(1)).join(', ')
-        : 'None';
-    document.getElementById('additionalServicesQuote').textContent = additionalServicesText;
-    
-    // Format and display total
-    document.getElementById('totalAmount').textContent = `R${total.toLocaleString()}`;
-    
-    // Show results
-    if (quoteResults) {
-        quoteResults.style.display = 'block';
-        quoteResults.scrollIntoView({ behavior: 'smooth' });
-    } else {
-        console.error('Quote results element not found');
-    }
+        
+        // Convert single audit type to array for compatibility
+        const auditTypes = [auditType];
+        const measuringPoints = parseInt(formData.get('measuringPoints')) || 0;
+        const duration = formData.get('duration');
+        const distance = parseFloat(formData.get('distance')) || 0;
+        const urgency = formData.get('urgency');
+        const additionalServicesList = formData.getAll('additionalServices');
+        
+        console.log('Form data:', {
+            auditTypes,
+            substances,
+            measuringPoints,
+            duration,
+            distance,
+            urgency,
+            additionalServicesList
+        });
+        
+        if (auditTypes.length === 0 || substances.length === 0 || !measuringPoints || !duration || !distance || !urgency) {
+            alert('Please fill in all required fields.');
+            hideLoading(this);
+            return;
+        }
+        
+        // Calculate hours per measuring point
+        const hoursPerPoint = durationMultipliers[duration];
+        const totalAuditHours = measuringPoints * hoursPerPoint;
+        
+        // Calculate travel time (assuming 60km/h average speed)
+        const travelTime = (distance * 2) / 60; // Round trip
+        const travelCost = travelTime * travelRate + (distance * 2 * distanceRate);
+        
+        // Calculate accommodation (if multi-day)
+        const totalDays = Math.ceil(totalAuditHours / 24);
+        const accommodationCost = totalDays > 1 ? (totalDays - 1) * accommodationRate : 0;
+        
+        // Calculate technician cost
+        const technicianCost = totalAuditHours * technicianRate;
+        
+        // Calculate equipment cost (daily rate)
+        const equipmentCost = totalDays * equipmentRental;
+        
+        // Calculate base total
+        let total = technicianCost + equipmentCost + travelCost + accommodationCost;
+        
+        // Apply urgency surcharge (50% for super urgent)
+        if (urgency === 'emergency') {
+            total += (total * 0.5);
+        }
+        
+        // Add additional services
+        let additionalCost = 0;
+        additionalServicesList.forEach(service => {
+            if (service === 'report' || service === 'recommendations') {
+                // Proportional to duration (same time as audit)
+                additionalCost += totalAuditHours * technicianRate;
+            } else {
+                additionalCost += additionalServices[service];
+            }
+        });
+        
+        total += additionalCost;
+        
+        // Update quote display
+        document.getElementById('baseService').textContent = auditTypes.map(type => pricingStructure[type].name).join(', ');
+        document.getElementById('systemSizeQuote').textContent = measuringPoints + ' measuring points';
+        document.getElementById('durationQuote').textContent = hoursPerPoint + ' hours per point (' + totalAuditHours + ' total hours)';
+        document.getElementById('locationQuote').textContent = distance + ' km';
+        document.getElementById('urgencyQuote').textContent = urgency.charAt(0).toUpperCase() + urgency.slice(1);
+        
+        // Additional services display
+        const additionalServicesText = additionalServicesList.length > 0 
+            ? additionalServicesList.map(service => service.charAt(0).toUpperCase() + service.slice(1)).join(', ')
+            : 'None';
+        document.getElementById('additionalServicesQuote').textContent = additionalServicesText;
+        
+        // Format and display total
+        document.getElementById('totalAmount').textContent = `R${total.toLocaleString()}`;
+        
+        // Show results
+        if (quoteResults) {
+            quoteResults.style.display = 'block';
+            quoteResults.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            console.error('Quote results element not found');
+        }
+        
+        // Hide loading state
+        hideLoading(this);
+    }, 1000);
 });
 
 // Reset form function
@@ -438,22 +448,97 @@ Please contact the client to provide a detailed quote.
     window.location.href = mailtoLink;
 }
 
+// Email quote function
+function emailQuote() {
+    const baseService = document.getElementById('baseService').textContent;
+    const systemSize = document.getElementById('systemSizeQuote').textContent;
+    const duration = document.getElementById('durationQuote').textContent;
+    const location = document.getElementById('locationQuote').textContent;
+    const urgency = document.getElementById('urgencyQuote').textContent;
+    const additionalServices = document.getElementById('additionalServicesQuote').textContent;
+    const totalAmount = document.getElementById('totalAmount').textContent;
+    
+    const emailBody = `
+FlowVerification.com Quote Summary
+
+Base Service: ${baseService}
+System Size: ${systemSize}
+Duration: ${duration}
+Location: ${location}
+Urgency: ${urgency}
+Additional Services: ${additionalServices}
+
+Estimated Total: ${totalAmount}
+
+This is an automated quote. For detailed pricing and to proceed with your request, please contact us at info@opti-eng.co.za or call 066 135 0355.
+
+Thank you for considering FlowVerification.com for your measurement needs.
+    `;
+    
+    const mailtoLink = `mailto:?subject=FlowVerification Quote - ${baseService}&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = mailtoLink;
+}
+
+// Print quote function
+function printQuote() {
+    const quoteCard = document.querySelector('.quote-card');
+    if (quoteCard) {
+        const printWindow = window.open('', '_blank');
+        printWindow.document.write(`
+            <html>
+                <head>
+                    <title>FlowVerification Quote</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 20px; }
+                        .quote-header { text-align: center; margin-bottom: 30px; }
+                        .quote-details { margin-bottom: 20px; }
+                        .quote-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
+                        .quote-total { background: #f8f9fa; padding: 15px; margin: 20px 0; border-radius: 5px; }
+                        .total-line { font-size: 18px; font-weight: bold; }
+                    </style>
+                </head>
+                <body>
+                    <div class="quote-header">
+                        <h1>FlowVerification.com</h1>
+                        <h2>Quote Summary</h2>
+                    </div>
+                    ${quoteCard.innerHTML}
+                </body>
+            </html>
+        `);
+        printWindow.document.close();
+        printWindow.print();
+    }
+}
+
 // Contact form handling
 const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
-    const formData = new FormData(contactForm);
-    const firstName = formData.get('firstName');
-    const lastName = formData.get('lastName');
-    const email = formData.get('email');
-    const phone = formData.get('phone');
-    const company = formData.get('company');
-    const message = formData.get('message');
+    // Show loading state
+    showLoading(this);
     
-    // Create email body
-    const emailBody = `
+    // Simulate processing time for better UX
+    setTimeout(() => {
+        const formData = new FormData(contactForm);
+        const firstName = formData.get('firstName');
+        const lastName = formData.get('lastName');
+        const email = formData.get('email');
+        const phone = formData.get('phone');
+        const company = formData.get('company');
+        const message = formData.get('message');
+        
+        // Validate required fields
+        if (!firstName || !lastName || !email || !message) {
+            alert('Please fill in all required fields (First Name, Last Name, Email, and Message).');
+            hideLoading(this);
+            return;
+        }
+        
+        // Create email body
+        const emailBody = `
 New Contact Form Submission from FlowVerification.com
 
 Name: ${firstName} ${lastName}
@@ -463,16 +548,20 @@ Company: ${company || 'Not provided'}
 
 Message:
 ${message}
-    `;
-    
-    // Create mailto link
-    const mailtoLink = `mailto:info@opti-eng.co.za?subject=New Contact Form Submission&body=${encodeURIComponent(emailBody)}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Show success message
-    alert('Thank you for your message! Your email client should open with a pre-filled message. Please send it to complete your inquiry.');
+        `;
+        
+        // Create mailto link
+        const mailtoLink = `mailto:info@opti-eng.co.za?subject=New Contact Form Submission&body=${encodeURIComponent(emailBody)}`;
+        
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Hide loading state
+        hideLoading(this);
+        
+        // Show success message
+        alert('Thank you for your message! Your email client should open with a pre-filled message. Please send it to complete your inquiry.');
+    }, 500);
 });
 
 // Navbar scroll effect
@@ -696,28 +785,7 @@ function hideLoading(form) {
     form.classList.remove('loading');
 }
 
-// Enhanced form submission with loading states
-quoteForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    showLoading(this);
-    
-    // Simulate processing time
-    setTimeout(() => {
-        // Your existing quote calculation logic here
-        hideLoading(this);
-    }, 1000);
-});
-
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    showLoading(this);
-    
-    // Simulate processing time
-    setTimeout(() => {
-        // Your existing contact form logic here
-        hideLoading(this);
-    }, 1000);
-});
+// Enhanced form submission with loading states - REMOVED DUPLICATE LISTENERS
 
 
 // Smooth scrolling for anchor links

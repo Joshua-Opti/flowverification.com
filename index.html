@@ -128,8 +128,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">South Africa's #1 Flow Verification, Compressed Air Audit, Water Audit & Energy Audit Experts</h1>
-            <p class="hero-description">FlowVerification specializes in comprehensive flow verification, compressed air audits, water audits, energy audits, and system auditing for industrial operations. We identify inefficiencies, validate system performance, detect leaks, optimize energy consumption, and ensure your equipment operates at peak efficiency with maximum cost savings.</p>
+            <h1 class="hero-title">South Africa's #1 Flow Verification Experts</h1>
             
             <!-- Trust Indicators -->
             <div class="trust-indicators">
@@ -743,7 +742,9 @@
                             <textarea id="comments" name="comments" rows="4" placeholder="Please provide any specific requirements, constraints, or additional information..."></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-large">Generate Quote</button>
+                        <div style="text-align: center; margin-top: 1.5rem;">
+                            <button type="submit" class="btn btn-primary btn-large">Generate Quote</button>
+                        </div>
                     </form>
                 </div>
 
@@ -784,7 +785,9 @@
                         </div>
                         <div class="quote-actions">
                             <button class="btn btn-primary" onclick="requestDetailedQuote()">Request Detailed Quote</button>
-                            <button class="btn btn-secondary" onclick="resetForm()">Start Over</button>
+                            <button class="btn btn-secondary" onclick="emailQuote()">Email Quote</button>
+                            <button class="btn btn-secondary" onclick="printQuote()">Print Quote</button>
+                            <button class="btn btn-outline" onclick="resetForm()">Start Over</button>
                         </div>
                     </div>
                 </div>
