@@ -417,6 +417,56 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add contact form event listener if form exists
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // CRITICAL: Prevents page reload
+            
+            // Show loading state
+            showLoading(this);
+            
+            // Simulate processing time for better UX
+            setTimeout(() => {
+                const formData = new FormData(contactForm);
+                const firstName = formData.get('firstName');
+                const lastName = formData.get('lastName');
+                const email = formData.get('email');
+                const phone = formData.get('phone');
+                const company = formData.get('company');
+                const message = formData.get('message');
+                
+                // Validate required fields
+                if (!firstName || !lastName || !email || !message) {
+                    alert('Please fill in all required fields (First Name, Last Name, Email, and Message).');
+                    hideLoading(this);
+                    return;
+                }
+                
+                // Create email body
+                const emailBody = `
+New Contact Form Submission from FlowVerification.com
+
+Name: ${firstName} ${lastName}
+Email: ${email}
+Phone: ${phone || 'Not provided'}
+Company: ${company || 'Not provided'}
+
+Message:
+${message}
+                `;
+                
+                // Create mailto link
+                const mailtoLink = `mailto:info@opti-eng.co.za?subject=New Contact Form Submission&body=${encodeURIComponent(emailBody)}`;
+                
+                // Open email client
+                window.location.href = mailtoLink;
+                
+                // Hide loading state
+                hideLoading(this);
+                
+                // Show success message
+                alert('Thank you for your message! Your email client should open with a pre-filled message. Please send it to complete your inquiry.');
+            }, 500);
+        });
+    }
+}); // End DOM ready check
 
 // Reset form function
 function resetForm() {
