@@ -200,9 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Quote Calculator
-const quoteForm = document.getElementById('quoteForm');
-const quoteResults = document.getElementById('quoteResults');
+// Quote Calculator - Moved inside DOM ready check
 
 // Pricing structure
 const pricingStructure = {
@@ -291,7 +289,16 @@ document.getElementById('substance').addEventListener('change', function() {
     }
 });
 
-quoteForm.addEventListener('submit', function(e) {
+// DOM Ready Check for Form Event Listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Get form elements with null checks
+    const quoteForm = document.getElementById('quoteForm');
+    const contactForm = document.getElementById('contactForm');
+    const quoteResults = document.getElementById('quoteResults');
+    
+    // Add quote form event listener if form exists
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
     // Show loading state
@@ -404,17 +411,32 @@ quoteForm.addEventListener('submit', function(e) {
         // Hide loading state
         hideLoading(this);
     }, 1000);
-});
+        });
+    }
+    
+    // Add contact form event listener if form exists
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
 
 // Reset form function
 function resetForm() {
-    quoteForm.reset();
-    quoteResults.style.display = 'none';
-    quoteResults.scrollIntoView({ behavior: 'smooth' });
+    const quoteForm = document.getElementById('quoteForm');
+    const quoteResults = document.getElementById('quoteResults');
+    
+    if (quoteForm) {
+        quoteForm.reset();
+    }
+    if (quoteResults) {
+        quoteResults.style.display = 'none';
+        quoteResults.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 // Request detailed quote function
 function requestDetailedQuote() {
+    const quoteForm = document.getElementById('quoteForm');
+    if (!quoteForm) return;
+    
     const formData = new FormData(quoteForm);
     const auditTypes = Array.from(document.getElementById('auditType').selectedOptions).map(option => option.value);
     const substances = Array.from(document.getElementById('substance').selectedOptions).map(option => option.value);
@@ -511,58 +533,7 @@ function printQuote() {
     }
 }
 
-// Contact form handling
-const contactForm = document.getElementById('contactForm');
-
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Show loading state
-    showLoading(this);
-    
-    // Simulate processing time for better UX
-    setTimeout(() => {
-        const formData = new FormData(contactForm);
-        const firstName = formData.get('firstName');
-        const lastName = formData.get('lastName');
-        const email = formData.get('email');
-        const phone = formData.get('phone');
-        const company = formData.get('company');
-        const message = formData.get('message');
-        
-        // Validate required fields
-        if (!firstName || !lastName || !email || !message) {
-            alert('Please fill in all required fields (First Name, Last Name, Email, and Message).');
-            hideLoading(this);
-            return;
-        }
-        
-        // Create email body
-        const emailBody = `
-New Contact Form Submission from FlowVerification.com
-
-Name: ${firstName} ${lastName}
-Email: ${email}
-Phone: ${phone || 'Not provided'}
-Company: ${company || 'Not provided'}
-
-Message:
-${message}
-        `;
-        
-        // Create mailto link
-        const mailtoLink = `mailto:info@opti-eng.co.za?subject=New Contact Form Submission&body=${encodeURIComponent(emailBody)}`;
-        
-        // Open email client
-        window.location.href = mailtoLink;
-        
-        // Hide loading state
-        hideLoading(this);
-        
-        // Show success message
-        alert('Thank you for your message! Your email client should open with a pre-filled message. Please send it to complete your inquiry.');
-    }, 500);
-});
+// REMOVED DUPLICATE CONTACT FORM HANDLER - Now handled in DOM ready check above
 
 // Navbar scroll effect
 window.addEventListener('scroll', () => {
@@ -905,22 +876,5 @@ function validateForm(form) {
     return isValid;
 }
 
-// Add loading states to buttons
-document.addEventListener('DOMContentLoaded', () => {
-    const submitButtons = document.querySelectorAll('button[type="submit"]');
-    submitButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            if (this.form && validateForm(this.form)) {
-                this.classList.add('loading');
-                this.disabled = true;
-                
-                // Remove loading state after form processing
-                setTimeout(() => {
-                    this.classList.remove('loading');
-                    this.disabled = false;
-                }, 2000);
-            }
-        });
-    });
-});
+// REMOVED CONFLICTING CLICK LISTENERS - These were interfering with form submission
 
