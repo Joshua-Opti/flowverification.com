@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights - Stories Architecture & Interior Design</title>
+    <meta name="description" content="Explore our latest insights on architecture, interior design trends, and industry expertise. Stay updated with design inspiration and professional tips.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Stories</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="portfolio.html" class="nav-link">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link active">Insights</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <h1>Design Insights</h1>
+            <p>Explore the latest trends, tips, and inspiration in architecture and interior design</p>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="featured-article">
+        <div class="container">
+            <div class="featured-content">
+                <div class="featured-image" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Featured Article">
+                    <div class="article-category">Featured</div>
+                </div>
+                <div class="featured-text" data-aos="fade-left">
+                    <div class="article-meta">
+                        <span class="article-date">December 15, 2024</span>
+                        <span class="article-category-tag">Architecture</span>
+                    </div>
+                    <h2>The Future of Sustainable Architecture</h2>
+                    <p>As we move towards a more environmentally conscious world, sustainable architecture is no longer just a trend—it's a necessity. This comprehensive guide explores the latest innovations in green building design, from energy-efficient materials to smart home technologies that are revolutionizing the way we think about residential and commercial spaces.</p>
+                    <p>Discover how architects and designers are incorporating renewable energy sources, water conservation systems, and biophilic design principles to create buildings that not only reduce environmental impact but also enhance the well-being of their occupants.</p>
+                    <a href="blog.html#sustainable-architecture" class="btn btn-primary">Read Full Article</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <section class="blog-categories">
+        <div class="container">
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">All Articles</button>
+                <button class="category-btn" data-category="architecture">Architecture</button>
+                <button class="category-btn" data-category="interior-design">Interior Design</button>
+                <button class="category-btn" data-category="trends">Trends</button>
+                <button class="category-btn" data-category="case-studies">Case Studies</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="blog-grid-section">
+        <div class="container">
+            <div class="blog-grid">
+                <!-- Article 1 -->
+                <article class="blog-card" data-category="interior-design" data-aos="fade-up">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Minimalist Interior Design">
+                        <div class="blog-category-tag">Interior Design</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">December 10, 2024</span>
+                            <span class="blog-read-time">5 min read</span>
+                        </div>
+                        <h3>Minimalist Design: Less is More</h3>
+                        <p>Explore the principles of minimalist interior design and learn how to create serene, functional spaces that promote well-being and reduce visual clutter.</p>
+                        <a href="blog.html#minimalist-design" class="blog-link">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-card" data-category="architecture" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Modern Architecture">
+                        <div class="blog-category-tag">Architecture</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">December 8, 2024</span>
+                            <span class="blog-read-time">7 min read</span>
+                        </div>
+                        <h3>Biophilic Design in Modern Architecture</h3>
+                        <p>Discover how incorporating natural elements into architectural design can improve mental health, productivity, and overall well-being in both residential and commercial spaces.</p>
+                        <a href="blog.html#biophilic-design" class="blog-link">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="blog-card" data-category="trends" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Color Trends 2024">
+                        <div class="blog-category-tag">Trends</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">December 5, 2024</span>
+                            <span class="blog-read-time">4 min read</span>
+                        </div>
+                        <h3>Color Trends for 2024</h3>
+                        <p>Stay ahead of the curve with our comprehensive guide to the most influential color palettes and design trends shaping the industry in 2024.</p>
+                        <a href="blog.html#color-trends" class="blog-link">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="blog-card" data-category="case-studies" data-aos="fade-up" data-aos-delay="300">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Office Renovation">
+                        <div class="blog-category-tag">Case Study</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">December 3, 2024</span>
+                            <span class="blog-read-time">8 min read</span>
+                        </div>
+                        <h3>Corporate Office Transformation</h3>
+                        <p>Follow the complete journey of transforming a traditional corporate office into a modern, collaborative workspace that boosts employee productivity and satisfaction.</p>
+                        <a href="blog.html#office-transformation" class="blog-link">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="blog-card" data-category="interior-design" data-aos="fade-up" data-aos-delay="400">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Small Space Design">
+                        <div class="blog-category-tag">Interior Design</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">November 30, 2024</span>
+                            <span class="blog-read-time">6 min read</span>
+                        </div>
+                        <h3>Maximizing Small Spaces</h3>
+                        <p>Learn expert tips and tricks for making the most of compact living spaces, from clever storage solutions to optical illusions that make rooms feel larger.</p>
+                        <a href="blog.html#small-spaces" class="blog-link">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="blog-card" data-category="architecture" data-aos="fade-up" data-aos-delay="500">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Smart Home Technology">
+                        <div class="blog-category-tag">Architecture</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">November 28, 2024</span>
+                            <span class="blog-read-time">9 min read</span>
+                        </div>
+                        <h3>Smart Home Integration in Design</h3>
+                        <p>Explore how smart home technology is being seamlessly integrated into architectural design, creating homes that are both beautiful and intelligent.</p>
+                        <a href="blog.html#smart-homes" class="blog-link">Read More</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text" data-aos="fade-right">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to our newsletter and never miss the latest design insights, trends, and project updates.</p>
+                    <div class="newsletter-benefits">
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>Weekly design inspiration</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>Exclusive project previews</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>Industry trend reports</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="newsletter-form" data-aos="fade-left">
+                    <form class="subscription-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Enter your email address" required>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </div>
+                        <p class="privacy-note">We respect your privacy. Unsubscribe at any time.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Tags -->
+    <section class="popular-tags">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Topics</h2>
+                <p>Explore articles by popular design topics and themes</p>
+            </div>
+            <div class="tags-grid">
+                <a href="blog.html" class="tag-link" data-filter="all">All Topics</a>
+                <a href="blog.html" class="tag-link" data-filter="architecture">Architecture</a>
+                <a href="blog.html" class="tag-link" data-filter="interior-design">Interior Design</a>
+                <a href="blog.html" class="tag-link" data-filter="trends">Trends</a>
+                <a href="blog.html" class="tag-link" data-filter="case-studies">Case Studies</a>
+                <a href="blog.html" class="tag-link" data-filter="sustainable">Sustainable Design</a>
+                <a href="blog.html" class="tag-link" data-filter="modern">Modern Architecture</a>
+                <a href="blog.html" class="tag-link" data-filter="minimalism">Minimalism</a>
+                <a href="blog.html" class="tag-link" data-filter="biophilic">Biophilic Design</a>
+                <a href="blog.html" class="tag-link" data-filter="smart-homes">Smart Homes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Space?</h2>
+                <p>Let our design expertise bring your vision to life with innovative solutions tailored to your needs.</p>
+                <a href="contact.html" class="btn btn-primary">Start Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Stories</h3>
+                    <p>Creating exceptional spaces that tell your unique story through innovative architecture and interior design.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/storiesdesign" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/storiesdesign" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/company/storiesdesign" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://pinterest.com/storiesdesign" target="_blank" rel="noopener"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Architecture</a></li>
+                        <li><a href="services.html">Interior Design</a></li>
+                        <li><a href="services.html">Project Management</a></li>
+                        <li><a href="services.html">3D Visualization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="blog.html">Insights</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Design Street, Creative City, CC 12345</p>
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> hello@storiesdesign.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Stories Architecture & Interior Design. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
