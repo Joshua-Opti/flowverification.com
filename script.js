@@ -542,7 +542,7 @@ Additional Services: ${additionalServices}
 
 Estimated Total: ${totalAmount}
 
-This is an automated quote. For detailed pricing and to proceed with your request, please contact us at info@opti-eng.co.za or call 066 135 0355.
+This is an automated quote. For detailed pricing and to proceed with your request, please contact us at info@opti-eng.co.za or call 068 600 7384.
 
 Thank you for considering FlowVerification.com for your measurement needs.
     `;
